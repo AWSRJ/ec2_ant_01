@@ -1,0 +1,24 @@
+<project>
+
+    <target name="clean">
+        <delete dir="target"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="target/classes"/>
+        <javac srcdir="src" destdir="target/classes" includeantruntime="false"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="target/Ant.jar" basedir="target/classes">
+            <manifest>
+                <attribute name="Main-Class" value="com.Ant"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <java jar="target/Ant.jar" fork="true"/>
+    </target>
+
+</project>
